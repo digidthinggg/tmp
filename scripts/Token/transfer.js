@@ -20,6 +20,23 @@ const TRANSFER_AMOUNT = 1
 const transferFromAToB = Math.random() < 0.5
 
 async function main() {
+  let totalSupply = await contract.getTotalSupply()
+  let totalSupplyStr = ethers.utils.formatEther(totalSupply)
+  console.log(">>> totalSupply:", totalSupplyStr)
+
+  await contract.publicMint()
+
+  totalSupply = await contract.getTotalSupply()
+  totalSupplyStr = ethers.utils.formatEther(totalSupply)
+  console.log(">>> totalSupply:", totalSupplyStr)
+
+  await contract.publicBurn()
+
+  totalSupply = await contract.getTotalSupply()
+  totalSupplyStr = ethers.utils.formatEther(totalSupply)
+  console.log(">>> totalSupply:", totalSupplyStr)
+
+  /*
   if (transferFromAToB) {
     console.log(">>> Transfering from A to B")
     await contract.transferFrom(ACC_A_ADDR, ACC_B_ADDR, TRANSFER_AMOUNT)
@@ -27,6 +44,8 @@ async function main() {
     console.log(">>> Transfering from B to A")
     await contract.transferFrom(ACC_B_ADDR, ACC_A_ADDR, TRANSFER_AMOUNT)
   }
+  */
+
 }
 
 main()
