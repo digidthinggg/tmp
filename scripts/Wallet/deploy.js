@@ -1,4 +1,4 @@
-const CONTRACT_NAME = process.env.TOKEN_CONTRACT_NAME
+const CONTRACT_NAME = process.env.WALLET_CONTRACT_NAME
 
 async function main() {
   const Contract = await ethers.getContractFactory(CONTRACT_NAME)
